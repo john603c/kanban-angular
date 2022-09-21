@@ -1,0 +1,167 @@
+#main{
+    margin: 30px;
+}
+
+.main-container{
+    height: 100%;
+}
+
+.task-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#task-form div{
+    margin-bottom: 10px;
+}
+
+#task-form .button-container{
+    display: flex;
+    justify-content: center;
+}
+
+#task-form .button-container button{
+    display: flex;
+    align-items: center;
+}
+
+.task-card-form{
+    flex-basis: 20%;
+    height:100%;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #242424;
+}
+
+.task-card-form h2{
+    color: #fff !important;
+    border-bottom: 1px solid #fff !important;
+}
+
+.task-view{
+    display: flex;
+    flex-basis: 80%;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.task-container h2{
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Nunito", sans-serif;
+    color: #242424;
+    border-bottom: 1px solid #242424;
+}
+
+.task-column{
+    width: 30%;
+}
+
+.task-column h2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-list{
+    height: 60vh;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #fff;
+    overflow: auto;
+}
+
+.task-item{
+    margin-bottom: 10px;
+    padding: 20px 10px;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #000;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05) ;
+}
+
+.task-item div{
+    margin-bottom: 10px;
+}
+
+.task-item div:last-child{
+    margin: 0;
+}
+
+.task-item label{
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+}
+
+.task-item .actions-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions-box .delete-icon{
+    color: #ff6161;
+}
+
+.done-icon{
+    color: #00d800;
+}
+
+.add-task{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-item-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #242424;
+}
+
+.add-item-button span{
+    font-size: 16px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
+  
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+  
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-column .cdk-drop-list-dragging .task-item:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media only screen and (max-width:768px) {
+    .task-container, .task-view{
+        display: block;
+    }
+
+    .task-view .task-column{
+        width: 100%;
+        margin-bottom:30px
+    }
+}

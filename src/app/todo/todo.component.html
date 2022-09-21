@@ -1,0 +1,112 @@
+<div id="main">
+    <div class="main-container">
+      <div class="task-container" cdkDropListGroup>
+        <div class="task-card-form">
+          <h2>Tarefa</h2>
+          <form id="task-form" [formGroup] = "todoForm">
+            <div class="input-group">
+              <span class="input-group-text"><mat-icon>edit</mat-icon></span>
+              <input type="text" class="form-control" placeholder="Nome da Tarefa" formControlName="description">
+            </div>
+            <div class="input-group">
+              <span class="input-group-text"><mat-icon>calendar_month</mat-icon></span>
+              <input type="date" class="form-control" placeholder="Data de início" formControlName="startDate">
+            </div>
+            <div class="input-group">
+              <span class="input-group-text"><mat-icon>event_available</mat-icon></span>
+              <input type="date" class="form-control" placeholder="Data de conclusão" formControlName="endDate">
+            </div>
+            <div class="button-container">
+              <button *ngIf="!isEditEnabled" class="btn btn-primary" [disabled]="todoForm.invalid" (click)="addTask()"><mat-icon>add</mat-icon><span>Adiconar tarefa</span></button>
+              <button *ngIf="isEditEnabled" class="btn btn-primary" [disabled]="todoForm.invalid" (click)="updateTask()" ><mat-icon>add</mat-icon><span>Atualizar tarefa</span></button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="task-view">
+            <!--To Do-->
+            <div class="task-column">
+            <h2><span>Para Fazer</span><span *ngIf="todo.length > 0">{{todo.length}}</span></h2>
+          
+                <div
+                class="task-list"
+                cdkDropList
+                [cdkDropListData]="todo"
+                (cdkDropListDropped)="drop($event)">
+    
+                <div class="task-item" *ngFor="let item of todo; let i = index" cdkDrag>
+                    <div class="description-task-box">
+                      <label>Descrição:</label>
+                      <p>{{item.description}}</p>
+                    </div>
+                    <div class="date-task-box">
+                      <label>Inicia em:</label>
+                      <p>{{item.startDate}}</p>
+                      <label>Finaliza em:</label>
+                      <p>{{item.endDate}}</p>
+                    </div>
+                    <div class="actions-box">
+                      <mat-icon class="edit-icon" (click)="onEdit(item, i)">edit</mat-icon>
+                      <mat-icon class="delete-icon" (click)="deleteTodoTask(i)">delete</mat-icon>
+                    </div>
+                </div>
+                </div>
+            </div>
+  
+          <!--In Progress-->
+          <div class="task-column">
+            <h2><span>Fazendo</span><span *ngIf="inProgress.length > 0">{{inProgress.length}}</span></h2>
+          
+            <div
+              class="task-list"
+              cdkDropList
+              [cdkDropListData]="inProgress"
+              (cdkDropListDropped)="drop($event)">
+              <div class="task-item" *ngFor="let item of inProgress; let i = index" cdkDrag>
+                <div class="description-task-box">
+                  <label>Descrição:</label>
+                  <p>{{item.description}}</p>
+                </div>
+                <div class="date-task-box">
+                  <label>Inicia em:</label>
+                  <p>{{item.startDate}}</p>
+                  <label>Finaliza em:</label>
+                  <p>{{item.endDate}}</p>
+                </div>
+                <div class="actions-box">
+                  <mat-icon class="delete-icon" (click)="deleteInProgressTask(i)">delete</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--Done-->
+          <div class="task-column">
+            <h2><span>Concluída</span><span *ngIf="done.length > 0">{{done.length}}</span></h2>
+          
+            <div
+              class="task-list"
+              cdkDropList
+              [cdkDropListData]="done"
+              (cdkDropListDropped)="drop($event)">
+              <div class="task-item" *ngFor="let item of done; let i = index" cdkDrag>
+                <div class="description-task-box">
+                  <label>Descrição:</label>
+                  <p>{{item.description}}</p>
+                </div>
+                <div class="date-task-box">
+                  <label>Inicia em:</label>
+                  <p>{{item.startDate}}</p>
+                  <label>Finaliza em:</label>
+                  <p>{{item.endDate}}</p>
+                </div>
+                <div class="actions-box">
+                  <mat-icon class="delete-icon" (click)="deleteDoneTask(i)">delete</mat-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
